@@ -8,7 +8,7 @@ namespace TP5_Grupo18_Programacion
 {
     public class Conexion
     {
-        private const string cadenaConexion = "Data Source=localhost\\sqlexpress; InitialCatalog=BDSucursales;Integrated Security = True";
+        private const string cadenaConexion = "Data Source=localhost\\sqlexpress; Initial Catalog=BDSucursales;Integrated Security = True";
 
         public int ejecutarTransaccion(string consultaSQL)
         {

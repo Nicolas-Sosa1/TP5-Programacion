@@ -13,13 +13,13 @@ namespace TP5_Grupo18_Programacion
         //se crea una variable para guardar la cantidad de filas afectadas por una consulta sql
         private int filasAfectadas;
         //se crea una instancia de la clase "Conexion" para manejar las consultas
-        private Conexion clase_conexion = new Conexion();
+        private Conexion conexion = new Conexion();
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
-    }
-    protected void btnEliminar_Click(object sender, EventArgs e)
+    
+        protected void btnEliminar_Click(object sender, EventArgs e)
         {
             //ESTABLEZCO LA CONSULTA SQL QUE SE QUIERE EJECUTAR
             string consultaSQL = "DELETE FROM Sucursal WHERE Id_Sucursal = " + txtIDSucursal.Text;
@@ -27,5 +27,24 @@ namespace TP5_Grupo18_Programacion
             //Ejecutar Consulta
             filasAfectadas = conexion.ejecutarTransaccion(consultaSQL);
 
+            MostrarMensaje(filasAfectadas);
+
+        }
+
+        private void MostrarMensaje(int filasAfectadas)
+        {
+            if (filasAfectadas == 1)
+            {
+                lblMensaje.Text = "La sucursal se ha eliminado con éxito";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+
+            }
+            else
+            {
+                lblMensaje.Text = "El ID ingresado no existe. No se eliminó ninguna sucursal.";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+            }
+
         }
     }
+}

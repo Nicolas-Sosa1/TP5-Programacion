@@ -11,7 +11,7 @@
             width: 100%;
         }
         .auto-style2 {
-            width: 133px;
+            width: 250px;
         }
         .auto-style3 {
             width: 150px;

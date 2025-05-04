@@ -10,7 +10,7 @@ namespace TP5_Grupo18_Programacion
 {
     public partial class ListadoSucursales : System.Web.UI.Page
     {
-        private const string cadenaConexion = "Data Source=localhost\\sqlexpress; InitialCatalog=BDSucursales;Integrated Security = True";
+        private const string cadenaConexion = "Data Source=localhost\\sqlexpress; Initial Catalog=BDSucursales;Integrated Security = True";
 
         string consultaSQL;
         protected void Page_Load(object sender, EventArgs e)
