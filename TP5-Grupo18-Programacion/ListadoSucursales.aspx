@@ -75,13 +75,15 @@
                         <asp:TextBox ID="txtIdSucursal" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" />
+                        <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" />&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Button ID="btnMostrar" runat="server" Text="Mostrar todos" />
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
+                    <asp:GridView ID="gvListado" runat="server"></asp:GridView>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td class="auto-style3">&nbsp;</td>
