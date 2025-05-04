@@ -22,7 +22,14 @@ namespace TP5_Grupo18_Programacion
             //Pasarle Cadena de Conexión Y Consulta SQL AL SqlCommand
             SqlCommand sqlCommand = new SqlCommand(consultaSQL, sqlConnection);
 
+            //ejecuta el comando sql y guarda el numero de filas que fueron afectadas en una variable
+            int filasAfectadas = sqlCommand.ExecuteNonQuery();
+
+            //cierra la conexion sql
+            sqlConnection.Close();
             
+            //devuelve el numero de filas
+            return filasAfectadas;
         }
     }
 }
