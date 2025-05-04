@@ -87,7 +87,7 @@
                         <asp:RegularExpressionValidator ID="revIdSucursal" runat="server" ErrorMessage="Debe ingresar un valor numérico" ValidationExpression="^[0-9,$]*$" ValidationGroup="1" ControlToValidate="txtIDSucursal">*</asp:RegularExpressionValidator>
                     </td>
                     <td>
-                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" ValidationGroup="1" Height="26px" Width="69px" />
+                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" ValidationGroup="1" Height="26px" Width="69px" OnClick="btnEliminar_Click" />
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>

@@ -19,4 +19,13 @@ namespace TP5_Grupo18_Programacion
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
     }
-}
+    protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            //ESTABLEZCO LA CONSULTA SQL QUE SE QUIERE EJECUTAR
+            string consultaSQL = "DELETE FROM Sucursal WHERE Id_Sucursal = " + txtIDSucursal.Text;
+
+            //Ejecutar Consulta
+            filasAfectadas = conexion.ejecutarTransaccion(consultaSQL);
+
+        }
+    }
