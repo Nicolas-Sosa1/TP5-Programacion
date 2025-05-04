@@ -15,7 +15,10 @@ namespace TP5_Grupo18_Programacion
         string consultaSQL;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack) 
+            {//se llama a la funcion unicamente la primera vez que se carga la pagina
+                cargarTabla();
+            }
         }
 
         private void cargarTabla()
@@ -24,13 +27,18 @@ namespace TP5_Grupo18_Programacion
 
             SqlConnection connection = new SqlConnection(cadenaConexion);
 
-
             connection.Open();
-
 
             SqlCommand sqlCommand = new SqlCommand(consultaSQL, connection);
 
-
+            //ejecuta la consulta SELECT y obtiene un lector de datos para recorrer los resultados
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            //asigna el lector de datos como fuente de datos del gridview para mostrar los resultados
+            gvListado.DataSource = reader;
+            //vincula los datos al gridview, actualiza la tabla en pantalla con los datos obtenidos
+            gvListado.DataBind();
+            //cierra la conexion con la base de datos
+            connection.Close();
         }
     }
 }
