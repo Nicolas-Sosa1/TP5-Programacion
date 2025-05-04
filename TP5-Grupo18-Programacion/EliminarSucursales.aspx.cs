@@ -18,7 +18,12 @@ namespace TP5_Grupo18_Programacion
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
-    
+
+        private void limpiarCampos()
+        {
+            txtIngresarIdSucursal.Text = "";
+        }
+
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             //ESTABLEZCO LA CONSULTA SQL QUE SE QUIERE EJECUTAR
@@ -27,6 +32,7 @@ namespace TP5_Grupo18_Programacion
             //Ejecutar Consulta
             filasAfectadas = conexion.ejecutarTransaccion(consultaSQL);
 
+            limpiarCampos();
             MostrarMensaje(filasAfectadas);
 
         }

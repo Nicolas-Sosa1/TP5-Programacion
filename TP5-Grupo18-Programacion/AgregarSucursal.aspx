@@ -238,7 +238,9 @@
                 </tr>
                 <tr>
                     <td class="auto-style17">&nbsp;</td>
-                    <td class="auto-style18">&nbsp;</td>
+                    <td class="auto-style18">
+                        <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" />
+                    </td>
                     <td class="auto-style19">&nbsp;</td>
                     <td class="auto-style20">&nbsp;</td>
                     <td class="auto-style20">&nbsp;</td>
