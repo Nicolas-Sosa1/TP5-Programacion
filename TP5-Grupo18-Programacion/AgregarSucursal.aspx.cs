@@ -44,5 +44,28 @@ namespace TP5_Grupo18_Programacion
             sqlConnection.Close();
 
         }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            string idProvincia = ddlProvincia.SelectedValue;
+
+            //ESTABLEZCO LA CONSULTA SQL QUE SE DESEA EJECUTAR
+            string consultaSQL = "INSERT INTO Sucursal (NombreSucursal, DescripcionSucursal, Id_ProvinciaSucursal, DireccionSucursal) VALUES ('" + txtNombreSucursal.Text + "', '" + txtDescripcion.Text + "', " + ddlProvincia.SelectedValue + ", '" + txtDireccion.Text + "')";
+
+
+            //Ejecutar Consulta
+            filasAfectadas = conexion.ejecutarTransaccion(consultaSQL);
+
+            limpiar();
+            mostrarMensaje(filasAfectadas);
+
+            private void limpiar()
+            {
+                txtDescripcion.Text = "";
+                txtDireccion.Text = "";
+                txtNombreSucursal.Text = "";
+                ddlProvincia.SelectedIndex = 0;
+            }
+        }
     }
 }
