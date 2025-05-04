@@ -21,7 +21,7 @@ namespace TP5_Grupo18_Programacion
 
         private void limpiarCampos()
         {
-            txtIngresarIdSucursal.Text = "";
+            txtIdSucursal.Text = "";
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
