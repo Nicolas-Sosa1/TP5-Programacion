@@ -49,7 +49,19 @@ namespace TP5_Grupo18_Programacion
             SqlConnection connection = new SqlConnection(cadenaConexion);
 
 
-         
+            connection.Open();
+
+
+            SqlCommand sqlCommand = new SqlCommand(consultaSQL, connection);
+
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            gvSucursales.DataSource = sqlDataReader;
+            gvSucursales.DataBind();
+
+            connection.Close();
+
         }
 
     }
