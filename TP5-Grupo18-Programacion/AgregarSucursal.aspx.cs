@@ -57,7 +57,7 @@ namespace TP5_Grupo18_Programacion
             filasAfectadas = conexion.ejecutarTransaccion(consultaSQL);
 
             limpiar();
-            mostrarMensaje(filasAfectadas);
+            
 
             private void limpiar()
             {
