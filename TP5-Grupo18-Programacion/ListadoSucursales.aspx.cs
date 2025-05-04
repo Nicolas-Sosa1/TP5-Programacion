@@ -40,5 +40,17 @@ namespace TP5_Grupo18_Programacion
             //cierra la conexion con la base de datos
             connection.Close();
         }
+
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+
+            consultaSQL = "SELECT Id_Sucursal, NombreSucursal, DescripcionSucursal, Id_ProvinciaSucursal, DireccionSucursal FROM Sucursal WHERE Id_Sucursal = " + txtIdSucursal.Text;
+            SqlConnection connection = new SqlConnection(cadenaConexion);
+
+
+         
+        }
+
     }
 }
