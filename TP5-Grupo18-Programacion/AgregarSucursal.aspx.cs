@@ -16,9 +16,7 @@ namespace TP5_Grupo18_Programacion
 
         private string consultaProvincias = "SELECT * FROM Provincia";
 
-        private int filasAfectadas;
-
-        private Conexion conexion = new Conexion();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
