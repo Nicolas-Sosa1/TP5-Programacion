@@ -20,26 +20,29 @@ namespace TP5_Grupo18_Programacion
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            if (!IsPostBack)// solo cargar datos en la primera carga de la pagina
+            { cargarDropDownList(); }
         }
-
         private void cargarDropDownList()
         {
             //Establecemos la conexion a la base de datos en SQL Server
             SqlConnection sqlConnection = new SqlConnection(cadenaConexion);
-
-
             sqlConnection.Open();
-
             // Consulta SQL que se desea ejecutar
             SqlCommand sqlCommand = new SqlCommand(consultaProvincias, sqlConnection);
-
             //Ejecutar Consulta SqlCommand
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
-            
+            //cargar datos de provincias en el dropdownlist desde el sqldatareader
+            ddlProvincia.DataSource = sqlDataReader;
+            ddlProvincia.DataTextField = "DescripcionProvincia";
+            ddlProvincia.DataValueField = "Id_Provincia";
+            ddlProvincia.DataBind();
+
+            //agregar una opción por defecto al inicio del dropdownlist
+            ddlProvincia.Items.Insert(0, new ListItem("--Seleccionar provincia--", "0"));
+            sqlConnection.Close();
 
         }
-
-
     }
 }
