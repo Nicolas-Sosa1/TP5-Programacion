@@ -57,8 +57,8 @@ namespace TP5_Grupo18_Programacion
 
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
-            gvSucursales.DataSource = sqlDataReader;
-            gvSucursales.DataBind();
+            gvListado.DataSource = sqlDataReader;
+            gvListado.DataBind();
 
             connection.Close();
 
