@@ -22,6 +22,25 @@
         .auto-style5 {
             width: 26px;
         }
+        .auto-style6 {
+            width: 250px;
+            height: 30px;
+        }
+        .auto-style7 {
+            width: 150px;
+            height: 30px;
+        }
+        .auto-style8 {
+            width: 34px;
+            height: 30px;
+        }
+        .auto-style9 {
+            width: 26px;
+            height: 30px;
+        }
+        .auto-style10 {
+            height: 30px;
+        }
     </style>
 </head>
 <body>
@@ -76,24 +95,26 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">Ingrese ID sucursal</td>
-                    <td class="auto-style3">
+                    <td class="auto-style6">
+                        <asp:Label ID="lblIngreseIdSucursal" runat="server" Text="Ingrese ID sucursal"></asp:Label>
+                    </td>
+                    <td class="auto-style7">
                         <asp:TextBox ID="txtIDSucursal" runat="server" ValidationGroup="1" Width="141px"></asp:TextBox>
                     </td>
-                    <td class="auto-style4">
+                    <td class="auto-style8">
                         <asp:RequiredFieldValidator ID="rfvIDsucursal" runat="server" ControlToValidate="txtIDSucursal" ErrorMessage="Debe ingresar un ID sucursal" ValidationGroup="1">*</asp:RequiredFieldValidator>
                     </td>
-                    <td class="auto-style5">
+                    <td class="auto-style9">
                         <asp:RegularExpressionValidator ID="revIdSucursal" runat="server" ErrorMessage="Debe ingresar un valor numérico" ValidationExpression="^[0-9,$]*$" ValidationGroup="1" ControlToValidate="txtIDSucursal">*</asp:RegularExpressionValidator>
                     </td>
-                    <td>
+                    <td class="auto-style10">
                         <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" ValidationGroup="1" Height="26px" Width="69px" OnClick="btnEliminar_Click" />
                     </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style10"></td>
+                    <td class="auto-style10"></td>
+                    <td class="auto-style10"></td>
+                    <td class="auto-style10"></td>
+                    <td class="auto-style10"></td>
                 </tr>
                 <tr>
                     <td class="auto-style2">&nbsp;</td>

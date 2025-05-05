@@ -12,9 +12,12 @@ namespace TP5_Grupo18_Programacion
     {
         private const string cadenaConexion = "Data Source=localhost\\sqlexpress; Initial Catalog=BDSucursales;Integrated Security = True";
 
+
         string consultaSQL;
         protected void Page_Load(object sender, EventArgs e)
         {
+            UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
             if (!IsPostBack) 
             {//se llama a la funcion unicamente la primera vez que se carga la pagina
                 cargarTabla();
@@ -64,5 +67,12 @@ namespace TP5_Grupo18_Programacion
 
         }
 
+        protected void btnMostrar_Click(object sender, EventArgs e)
+        {
+            cargarTabla();
+
+        }
+
+       
     }
 }

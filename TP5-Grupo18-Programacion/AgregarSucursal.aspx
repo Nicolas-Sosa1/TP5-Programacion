@@ -162,7 +162,7 @@
                 <tr>
                     <td class="auto-style17">Nombre Sucursal:</td>
                     <td class="auto-style18">
-                        <asp:TextBox ID="txtNombreSucursal" runat="server" Width="189px"></asp:TextBox>
+                        <asp:TextBox ID="txtNombreSucursal" runat="server" Width="189px" ValidationGroup="1"></asp:TextBox>
                     </td>
                     <td class="auto-style19">
                         <asp:RequiredFieldValidator ID="rfvNombreSucursal" runat="server" ControlToValidate="txtNombreSucursal" ErrorMessage="Debe ingresar un nombre de sucursal" ValidationGroup="1">*</asp:RequiredFieldValidator>
@@ -178,7 +178,7 @@
                 <tr>
                     <td class="auto-style17">Descripcion:</td>
                     <td class="auto-style18">
-                        <asp:TextBox ID="txtDescripcion" runat="server" TextMode="MultiLine" Width="189px"></asp:TextBox>
+                        <asp:TextBox ID="txtDescripcion" runat="server" TextMode="MultiLine" Width="189px" ValidationGroup="1"></asp:TextBox>
                     </td>
                     <td class="auto-style19">
                         <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="Debe ingresar una descripcion" ValidationGroup="1">*</asp:RequiredFieldValidator>
@@ -252,6 +252,12 @@
                 </tr>
             </table>
             <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
+            <br />
+            <br />
+            <br />
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="1" />
+            <br />
+
         </div>
     </form>
 </body>
