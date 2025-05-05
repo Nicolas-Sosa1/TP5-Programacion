@@ -239,7 +239,7 @@
                 <tr>
                     <td class="auto-style17">&nbsp;</td>
                     <td class="auto-style18">
-                        <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" />
+                        <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" ValidationGroup="1" />
                     </td>
                     <td class="auto-style19">&nbsp;</td>
                     <td class="auto-style20">&nbsp;</td>
@@ -251,6 +251,7 @@
                     <td class="auto-style22">&nbsp;</td>
                 </tr>
             </table>
+            <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
         </div>
     </form>
 </body>

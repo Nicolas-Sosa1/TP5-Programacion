@@ -10,7 +10,7 @@ namespace TP5_Grupo18_Programacion
     {
         private const string cadenaConexion = "Data Source=localhost\\sqlexpress; Initial Catalog=BDSucursales;Integrated Security = True";
 
-        public int ejecutarTransaccion(string consultaSQL)
+        public int EjecutarTransaccion(string consultaSQL)
         {
             //ESTABLECER UNA CONEXION A LA BASE DE DATOS SOL SERVER
             //CREAR EL OBJETO DE TIPO SqlConnection

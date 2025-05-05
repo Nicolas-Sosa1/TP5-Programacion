@@ -11,8 +11,9 @@ namespace TP5_Grupo18_Programacion
     public partial class AgregarSucursal : System.Web.UI.Page
     {
         string consultaSQL;
-
-        private const string cadenaConexion = @"Data Source=DESKTOP-Q0EVBE4\SQLEXPRESS;Initial Catalog=BDSucursales;Integrated Security=True";
+        int filasAfectadas;
+        private Conexion conexion = new Conexion();
+        private const string cadenaConexion = "Data Source=localhost\\sqlexpress;Initial Catalog=BDSucursales;Integrated Security=True";
 
         private string consultaProvincias = "SELECT * FROM Provincia";
 
@@ -21,7 +22,7 @@ namespace TP5_Grupo18_Programacion
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)// solo cargar datos en la primera carga de la pagina
-            { cargarDropDownList(); }
+                cargarDropDownList();
         }
         private void cargarDropDownList()
         {
@@ -52,20 +53,37 @@ namespace TP5_Grupo18_Programacion
             //ESTABLEZCO LA CONSULTA SQL QUE SE DESEA EJECUTAR
             string consultaSQL = "INSERT INTO Sucursal (NombreSucursal, DescripcionSucursal, Id_ProvinciaSucursal, DireccionSucursal) VALUES ('" + txtNombreSucursal.Text + "', '" + txtDescripcion.Text + "', " + ddlProvincia.SelectedValue + ", '" + txtDireccion.Text + "')";
 
-
             //Ejecutar Consulta
-            filasAfectadas = conexion.ejecutarTransaccion(consultaSQL);
+            filasAfectadas = conexion.EjecutarTransaccion(consultaSQL);
 
-            limpiar();
+            Limpiar();
+            MostrarMensaje(filasAfectadas);
+        }  
+
+        private void Limpiar()
+        {
+            txtDescripcion.Text = "";
+            txtDireccion.Text = "";
+            txtNombreSucursal.Text = "";
+            ddlProvincia.SelectedIndex = 0;
             
-
-            private void limpiar()
-            {
-                txtDescripcion.Text = "";
-                txtDireccion.Text = "";
-                txtNombreSucursal.Text = "";
-                ddlProvincia.SelectedIndex = 0;
-            }
         }
+
+        private void MostrarMensaje(int filasAfectadas)
+        {
+            if (filasAfectadas == 1)
+            {
+                lblMensaje.Text = "La sucursal se ha agregado con éxito";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+
+            }
+            else
+            {
+                lblMensaje.Text = "No se pudo realizar la operacion";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+            }
+
+        }
+
     }
 }

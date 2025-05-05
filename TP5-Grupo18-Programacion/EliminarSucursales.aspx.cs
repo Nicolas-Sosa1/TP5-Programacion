@@ -21,7 +21,7 @@ namespace TP5_Grupo18_Programacion
 
         private void limpiarCampos()
         {
-            txtIdSucursal.Text = "";
+            txtIDSucursal.Text = "";
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace TP5_Grupo18_Programacion
             string consultaSQL = "DELETE FROM Sucursal WHERE Id_Sucursal = " + txtIDSucursal.Text;
 
             //Ejecutar Consulta
-            filasAfectadas = conexion.ejecutarTransaccion(consultaSQL);
+            filasAfectadas = conexion.EjecutarTransaccion(consultaSQL);
 
             limpiarCampos();
             MostrarMensaje(filasAfectadas);
