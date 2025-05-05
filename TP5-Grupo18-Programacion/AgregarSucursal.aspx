@@ -214,7 +214,7 @@
                         <asp:TextBox ID="txtDireccion" runat="server" ValidationGroup="1" Width="215px"></asp:TextBox>
                     </td>
                     <td class="auto-style19">
-                        <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="Debe ingresar una direccion" ValidationGroup="1">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ControlToValidate="txtDireccion" ErrorMessage="Debe ingresar una direccion" ValidationGroup="1">*</asp:RequiredFieldValidator>
                     </td>
                     <td class="auto-style20">&nbsp;</td>
                     <td class="auto-style20">&nbsp;</td>

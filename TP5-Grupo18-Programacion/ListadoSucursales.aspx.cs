@@ -9,68 +9,49 @@ using System.Web.UI.WebControls;
 namespace TP5_Grupo18_Programacion
 {
     public partial class ListadoSucursales : System.Web.UI.Page
-    {
-        private const string cadenaConexion = "Data Source=localhost\\sqlexpress; Initial Catalog=BDSucursales;Integrated Security = True";
-
-
-        string consultaSQL;
+    {   
+        private Conexion conexion  = new Conexion();
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
             if (!IsPostBack) 
-            {//se llama a la funcion unicamente la primera vez que se carga la pagina
-                cargarTabla();
+            { // Se llama a la funcion unicamente la primera vez que se carga la pagina
+                CargarTabla();
             }
         }
 
-        private void cargarTabla()
+        private void CargarTabla()
         {
-            consultaSQL = "SELECT Id_Sucursal, NombreSucursal, DescripcionSucursal, Id_ProvinciaSucursal, DireccionSucursal FROM Sucursal";
+            // Establecer consulta SQL
+            string consultaSQL = "SELECT S.id_Sucursal AS ID_Sucursal, S.NombreSucursal AS Nombre, S.DescripcionSucursal AS Descripcion, P.DescripcionProvincia AS Provincia, S.DireccionSucursal AS Direccion " +
+            "FROM Sucursal S INNER JOIN Provincia P ON S.id_ProvinciaSucursal = P.id_Provincia";
+            SqlDataReader reader = conexion.LeerConsulta(consultaSQL);
 
-            SqlConnection connection = new SqlConnection(cadenaConexion);
-
-            connection.Open();
-
-            SqlCommand sqlCommand = new SqlCommand(consultaSQL, connection);
-
-            //ejecuta la consulta SELECT y obtiene un lector de datos para recorrer los resultados
-            SqlDataReader reader = sqlCommand.ExecuteReader();
-            //asigna el lector de datos como fuente de datos del gridview para mostrar los resultados
             gvListado.DataSource = reader;
-            //vincula los datos al gridview, actualiza la tabla en pantalla con los datos obtenidos
             gvListado.DataBind();
-            //cierra la conexion con la base de datos
-            connection.Close();
+            reader.Close();
         }
 
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            // Establecer consulta SQL
+            string consultaSQL = "SELECT S.id_Sucursal AS ID_Sucursal, S.NombreSucursal AS Nombre, S.DescripcionSucursal AS Descripcion, P.DescripcionProvincia AS Provincia, S.DireccionSucursal AS Direccion  " +
+            "FROM Sucursal S INNER JOIN Provincia P ON S.id_ProvinciaSucursal = P.id_Provincia WHERE S.id_Sucursal = " + txtIdSucursal.Text;
 
-            consultaSQL = "SELECT Id_Sucursal, NombreSucursal, DescripcionSucursal, Id_ProvinciaSucursal, DireccionSucursal FROM Sucursal WHERE Id_Sucursal = " + txtIdSucursal.Text;
-            SqlConnection connection = new SqlConnection(cadenaConexion);
+            SqlDataReader reader = conexion.LeerConsulta(consultaSQL);
 
-
-            connection.Open();
-
-
-            SqlCommand sqlCommand = new SqlCommand(consultaSQL, connection);
-
-
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-
-            gvListado.DataSource = sqlDataReader;
+            gvListado.DataSource = reader;
             gvListado.DataBind();
-
-            connection.Close();
+            reader.Close();
 
         }
 
         protected void btnMostrar_Click(object sender, EventArgs e)
         {
-            cargarTabla();
-
+            CargarTabla();
+            txtIdSucursal.Text = "";
         }
 
        

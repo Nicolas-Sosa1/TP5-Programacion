@@ -73,8 +73,8 @@
                     <td class="auto-style2"></td>
                 </tr>
                 <tr>
-                    <td colspan="3">Búsqueda ingrese Id Sucursal: </td>
-                    <td colspan="2">
+                    <td colspan="1">Búsqueda ingrese Id Sucursal: </td>
+                    <td colspan="1">
                         <asp:TextBox ID="txtIdSucursal" runat="server" ValidationGroup="1" Width="205px"></asp:TextBox>
                     </td>
                     <td>

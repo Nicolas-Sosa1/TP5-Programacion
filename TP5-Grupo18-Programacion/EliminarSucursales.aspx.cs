@@ -10,29 +10,27 @@ namespace TP5_Grupo18_Programacion
 {
     public partial class EliminarSucursales : System.Web.UI.Page
     {
-        //se crea una variable para guardar la cantidad de filas afectadas por una consulta sql
-        private int filasAfectadas;
-        //se crea una instancia de la clase "Conexion" para manejar las consultas
-        private Conexion conexion = new Conexion();
+        private Conexion conexion  = new Conexion();
+        int filasAfectadas;
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
 
-        private void limpiarCampos()
+        private void LimpiarCampos()
         {
             txtIDSucursal.Text = "";
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            //ESTABLEZCO LA CONSULTA SQL QUE SE QUIERE EJECUTAR
+            // Establecer consulta SQL
             string consultaSQL = "DELETE FROM Sucursal WHERE Id_Sucursal = " + txtIDSucursal.Text;
 
-            //Ejecutar Consulta
+            // Ejecutar Consulta
             filasAfectadas = conexion.EjecutarTransaccion(consultaSQL);
 
-            limpiarCampos();
+            LimpiarCampos();
             MostrarMensaje(filasAfectadas);
 
         }

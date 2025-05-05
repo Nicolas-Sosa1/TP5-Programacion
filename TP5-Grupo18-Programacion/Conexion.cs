@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -19,17 +20,25 @@ namespace TP5_Grupo18_Programacion
             //ABRIR LA CONEXION
             sqlConnection.Open();
 
-            //Pasarle Cadena de Conexión Y Consulta SQL AL SqlCommand
+            // Pasarle Cadena de Conexión Y Consulta SQL AL SqlCommand
             SqlCommand sqlCommand = new SqlCommand(consultaSQL, sqlConnection);
 
-            //ejecuta el comando sql y guarda el numero de filas que fueron afectadas en una variable
+            // Ejecuta el comando sql y guarda el numero de filas que fueron afectadas en una variable
             int filasAfectadas = sqlCommand.ExecuteNonQuery();
 
-            //cierra la conexion sql
+            // Cierra la conexion sql
             sqlConnection.Close();
             
-            //devuelve el numero de filas
+            // Devuelve el numero de filas
             return filasAfectadas;
+        }
+
+        public SqlDataReader LeerConsulta(string consultaSQL)
+        {
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            SqlCommand command = new SqlCommand(consultaSQL, conexion);
+            conexion.Open();
+            return command.ExecuteReader(CommandBehavior.CloseConnection);
         }
     }
 }
